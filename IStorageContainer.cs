@@ -44,7 +44,7 @@ namespace Grammophone.Storage
 		/// Get an axisting file.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
-		/// <returns>Returns a task whose result is the file or nuul if ot does not exit.</returns>
+		/// <returns>Returns a task whose result is the file or null if ot does not exit.</returns>
 		Task<IStorageFile> GetFileAsync(string filename);
 
 		/// <summary>
