@@ -34,7 +34,7 @@ namespace Grammophone.Storage
 		Task<IStorageFile> CreateFileAsync(string filename, string contentType, Stream stream, bool overwrite = true);
 
 		/// <summary>
-		/// Whecks whether a file exists.
+		/// Checks whether a file exists.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <returns>Returns a task whose result is true if the file exists.</returns>
@@ -44,7 +44,7 @@ namespace Grammophone.Storage
 		/// Get an axisting file.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
-		/// <returns>Returns a task whose result is the file or nouul if ot does not exit.</returns>
+		/// <returns>Returns a task whose result is the file or nuul if ot does not exit.</returns>
 		Task<IStorageFile> GetFileAsync(string filename);
 
 		/// <summary>
