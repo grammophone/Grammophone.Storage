@@ -9,7 +9,7 @@ namespace Grammophone.Storage
 	/// <summary>
 	/// A client for accessing <see cref="IStorageContainer"/>s.
 	/// </summary>
-	public interface IStorageClient
+	public interface IStorageProvider
 	{
 		/// <summary>
 		/// Get a reference to a container.
