@@ -28,10 +28,10 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <param name="contentType">The MIME content type of the file.</param>
-		/// <param name="stream">The input stream providing the contents of the file.</param>
+		/// <param name="stream">The input stream providing the contents of the file or null for empty file.</param>
 		/// <param name="overwrite">If true, any existing file with the same name will be overwritten.</param>
 		/// <returns>Returns a task whose result holds the file reference.</returns>
-		Task<IStorageFile> CreateFileAsync(string filename, string contentType, Stream stream, bool overwrite = true);
+		Task<IStorageFile> CreateFileAsync(string filename, string contentType, Stream stream = null, bool overwrite = true);
 
 		/// <summary>
 		/// Checks whether a file exists.

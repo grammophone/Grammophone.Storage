@@ -43,5 +43,11 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <returns>Returns a task whose result is the stream.</returns>
 		Task<Stream> OpenReadAsync();
+
+		/// <summary>
+		/// Open a stream for overwriting the file.
+		/// </summary>
+		/// <returns>Returns a task whose result is the stream.</returns>
+		Task<Stream> OpenWriteAsync();
 	}
 }
