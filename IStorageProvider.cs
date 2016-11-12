@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 namespace Grammophone.Storage
 {
 	/// <summary>
-	/// A client for accessing <see cref="IStorageContainer"/>s.
+	/// Root contract for handling files of a storage system.
+	/// The implementations must be thread-safe.
 	/// </summary>
 	public interface IStorageProvider
 	{
 		/// <summary>
-		/// Get a reference to a container.
+		/// The base URL of the files provided.
 		/// </summary>
-		/// <param name="containerName">The name of the container.</param>
-		/// <returns>
-		/// Returns a task whose result holds the container or null of the container doesn't exist.
-		/// </returns>
-		Task<IStorageContainer> GetContainerAsync(string containerName);
+		string URLBase { get; }
+
+		/// <summary>
+		/// Get a client for file operations.
+		/// </summary>
+		IStorageClient GetClient();
 	}
 }

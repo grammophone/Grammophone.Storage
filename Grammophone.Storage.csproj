@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IStorageProvider.cs" />
+    <Compile Include="IStorageClient.cs" />
     <Compile Include="IStorageContainer.cs" />
     <Compile Include="IStorageFile.cs" />
+    <Compile Include="IStorageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageException.cs" />
   </ItemGroup>
