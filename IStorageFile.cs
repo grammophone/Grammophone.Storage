@@ -45,7 +45,9 @@ namespace Grammophone.Storage
 		Task<Stream> OpenReadAsync();
 
 		/// <summary>
-		/// Open a stream for overwriting the file.
+		/// Open a stream for overwriting the file. Intended for large files.
+		/// For smaller files, the <see cref="IStorageContainer.CreateFileAsync(string, string, Stream, bool)"/>
+		/// with a non-null input stream is expected to be faster.
 		/// </summary>
 		/// <returns>Returns a task whose result is the stream.</returns>
 		Task<Stream> OpenWriteAsync();
