@@ -51,5 +51,11 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <returns>Returns a task whose result is the stream.</returns>
 		Task<Stream> OpenWriteAsync();
+
+		/// <summary>
+		/// Download the contents of a file to a stream.
+		/// </summary>
+		/// <returns>Returns a task completing the action.</returns>
+		Task DownloadToStreamAsync(Stream stream);
 	}
 }
