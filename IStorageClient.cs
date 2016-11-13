@@ -12,6 +12,11 @@ namespace Grammophone.Storage
 	public interface IStorageClient
 	{
 		/// <summary>
+		/// The provider of this client.
+		/// </summary>
+		IStorageProvider Provider { get; }
+
+		/// <summary>
 		/// Get a reference to a container.
 		/// </summary>
 		/// <param name="containerName">The name of the container.</param>
