@@ -34,6 +34,11 @@ namespace Grammophone.Storage
 		DateTimeOffset LastModificationDate { get; }
 
 		/// <summary>
+		/// User-defined metadata.
+		/// </summary>
+		IDictionary<string, string> Metadata { get; }
+
+		/// <summary>
 		/// The container of the file.
 		/// </summary>
 		IStorageContainer Container { get; }
@@ -57,5 +62,11 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <returns>Returns a task completing the action.</returns>
 		Task DownloadToStreamAsync(Stream stream);
+
+		/// <summary>
+		/// Save any changes made to <see cref="Metadata"/>.
+		/// </summary>
+		/// <returns>Returns a task completing the action.</returns>
+		Task SaveMetadataAsync();
 	}
 }
