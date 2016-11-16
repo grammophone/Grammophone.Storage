@@ -47,21 +47,43 @@ namespace Grammophone.Storage
 		/// Open a stream for reading the file.
 		/// </summary>
 		/// <returns>Returns a task whose result is the stream.</returns>
+		/// <remarks>
+		/// If the file is encrypted, it will be transparently decrypted 
+		/// according to the storage provider settings.
+		/// </remarks>
 		Task<Stream> OpenReadAsync();
 
 		/// <summary>
 		/// Open a stream for overwriting the file. Intended for large files.
-		/// For smaller files, the <see cref="IStorageContainer.CreateFileAsync(string, string, Stream, bool)"/>
-		/// with a non-null input stream is expected to be faster.
+		/// For smaller files, the <see cref="UploadFromStreamAsync(Stream, bool)"/>
+		/// method is expected to be faster.
 		/// </summary>
+		/// <param name="encrypt">
+		/// If true, encrypt the file contents according to the storage provider settings.
+		/// </param>
 		/// <returns>Returns a task whose result is the stream.</returns>
-		Task<Stream> OpenWriteAsync();
+		Task<Stream> OpenWriteAsync(bool encrypt);
 
 		/// <summary>
 		/// Download the contents of a file to a stream.
 		/// </summary>
+		/// <param name="stream">The output stream receiving the file contents.</param>
 		/// <returns>Returns a task completing the action.</returns>
+		/// <remarks>
+		/// If the file is encrypted, it will be transparently decrypted 
+		/// according to the storage provider settings.
+		/// </remarks>
 		Task DownloadToStreamAsync(Stream stream);
+
+		/// <summary>
+		/// Overwrite the file using the contents of a <paramref name="stream"/>.
+		/// </summary>
+		/// <param name="stream">The input stream providing the file contents.</param>
+		/// <param name="encrypt">
+		/// If true, encrypt the file contents according to the storage provider settings.
+		/// </param>
+		/// <returns>Returns a task completing the action.</returns>
+		Task UploadFromStreamAsync(Stream stream, bool encrypt);
 
 		/// <summary>
 		/// Save any changes made to <see cref="Metadata"/>.

@@ -23,20 +23,20 @@ namespace Grammophone.Storage
 		string Name { get; }
 
 		/// <summary>
-		/// The URI of the file.
+		/// The URI of the container.
 		/// Whether it is publicly accessible, depends on the container's permissions.
 		/// </summary>
 		Uri URI { get; }
 
 		/// <summary>
-		/// Create a file.
+		/// Create an empty file. Use <see cref="IStorageFile.UploadFromStreamAsync(Stream, bool)"/>
+		/// or <see cref="IStorageFile.OpenWriteAsync(bool)"/> to write its contents.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <param name="contentType">The MIME content type of the file.</param>
-		/// <param name="stream">The input stream providing the contents of the file or null for empty file.</param>
 		/// <param name="overwrite">If true, any existing file with the same name will be overwritten.</param>
 		/// <returns>Returns a task whose result holds the file reference.</returns>
-		Task<IStorageFile> CreateFileAsync(string filename, string contentType, Stream stream = null, bool overwrite = true);
+		Task<IStorageFile> CreateFileAsync(string filename, string contentType, bool overwrite = true);
 
 		/// <summary>
 		/// Checks whether a file exists.
@@ -46,10 +46,10 @@ namespace Grammophone.Storage
 		Task<bool> FileExistsAsync(string filename);
 
 		/// <summary>
-		/// Get an axisting file.
+		/// Get an existing file.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
-		/// <returns>Returns a task whose result is the file or null if ot does not exit.</returns>
+		/// <returns>Returns a task whose result is the file or null if it does not exit.</returns>
 		Task<IStorageFile> GetFileAsync(string filename);
 
 		/// <summary>
