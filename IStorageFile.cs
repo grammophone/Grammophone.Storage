@@ -51,10 +51,31 @@ namespace Grammophone.Storage
 		/// If the file is encrypted, it will be transparently decrypted 
 		/// according to the storage provider settings.
 		/// </remarks>
+		Stream OpenRead();
+
+		/// <summary>
+		/// Open a stream for reading the file asynchronoysly.
+		/// </summary>
+		/// <returns>Returns a task whose result is the stream.</returns>
+		/// <remarks>
+		/// If the file is encrypted, it will be transparently decrypted 
+		/// according to the storage provider settings.
+		/// </remarks>
 		Task<Stream> OpenReadAsync();
 
 		/// <summary>
 		/// Open a stream for overwriting the file. Intended for large files.
+		/// For smaller files, the <see cref="UploadFromStream(Stream, bool)"/>
+		/// method is expected to be faster.
+		/// </summary>
+		/// <param name="encrypt">
+		/// If true, encrypt the file contents according to the storage provider settings.
+		/// </param>
+		/// <returns>Returns a task whose result is the stream.</returns>
+		Stream OpenWrite(bool encrypt);
+
+		/// <summary>
+		/// Open a stream for overwriting the file asynchronously. Intended for large files.
 		/// For smaller files, the <see cref="UploadFromStreamAsync(Stream, bool)"/>
 		/// method is expected to be faster.
 		/// </summary>
@@ -73,6 +94,17 @@ namespace Grammophone.Storage
 		/// If the file is encrypted, it will be transparently decrypted 
 		/// according to the storage provider settings.
 		/// </remarks>
+		void DownloadToStream(Stream stream);
+
+		/// <summary>
+		/// Download the contents of a file to a stream asynchronously.
+		/// </summary>
+		/// <param name="stream">The output stream receiving the file contents.</param>
+		/// <returns>Returns a task completing the action.</returns>
+		/// <remarks>
+		/// If the file is encrypted, it will be transparently decrypted 
+		/// according to the storage provider settings.
+		/// </remarks>
 		Task DownloadToStreamAsync(Stream stream);
 
 		/// <summary>
@@ -83,10 +115,26 @@ namespace Grammophone.Storage
 		/// If true, encrypt the file contents according to the storage provider settings.
 		/// </param>
 		/// <returns>Returns a task completing the action.</returns>
+		void UploadFromStream(Stream stream, bool encrypt);
+
+		/// <summary>
+		/// Overwrite the file using the contents of a <paramref name="stream"/> asynchronously.
+		/// </summary>
+		/// <param name="stream">The input stream providing the file contents.</param>
+		/// <param name="encrypt">
+		/// If true, encrypt the file contents according to the storage provider settings.
+		/// </param>
+		/// <returns>Returns a task completing the action.</returns>
 		Task UploadFromStreamAsync(Stream stream, bool encrypt);
 
 		/// <summary>
 		/// Save any changes made to <see cref="Metadata"/>.
+		/// </summary>
+		/// <returns>Returns a task completing the action.</returns>
+		void SaveMetadata();
+
+		/// <summary>
+		/// Save any changes made to <see cref="Metadata"/> asynchronously.
 		/// </summary>
 		/// <returns>Returns a task completing the action.</returns>
 		Task SaveMetadataAsync();

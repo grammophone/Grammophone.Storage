@@ -29,7 +29,17 @@ namespace Grammophone.Storage
 		Uri URI { get; }
 
 		/// <summary>
-		/// Create an empty file. Use <see cref="IStorageFile.UploadFromStreamAsync(Stream, bool)"/>
+		/// Create an empty file. Use <see cref="IStorageFile.UploadFromStream(Stream, bool)"/>
+		/// or <see cref="IStorageFile.OpenWrite(bool)"/> to write its contents.
+		/// </summary>
+		/// <param name="filename">The name of the file.</param>
+		/// <param name="contentType">The MIME content type of the file.</param>
+		/// <param name="overwrite">If true, any existing file with the same name will be overwritten.</param>
+		/// <returns>Returns a task whose result holds the file reference.</returns>
+		IStorageFile CreateFile(string filename, string contentType, bool overwrite = true);
+
+		/// <summary>
+		/// Create an empty file asynchronously. Use <see cref="IStorageFile.UploadFromStreamAsync(Stream, bool)"/>
 		/// or <see cref="IStorageFile.OpenWriteAsync(bool)"/> to write its contents.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
@@ -43,6 +53,13 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <returns>Returns a task whose result is true if the file exists.</returns>
+		bool FileExists(string filename);
+
+		/// <summary>
+		/// Checks whether a file exists asynchronously.
+		/// </summary>
+		/// <param name="filename">The name of the file.</param>
+		/// <returns>Returns a task whose result is true if the file exists.</returns>
 		Task<bool> FileExistsAsync(string filename);
 
 		/// <summary>
@@ -50,10 +67,24 @@ namespace Grammophone.Storage
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <returns>Returns a task whose result is the file or null if it does not exit.</returns>
+		IStorageFile GetFile(string filename);
+
+		/// <summary>
+		/// Get an existing file asynchronously.
+		/// </summary>
+		/// <param name="filename">The name of the file.</param>
+		/// <returns>Returns a task whose result is the file or null if it does not exit.</returns>
 		Task<IStorageFile> GetFileAsync(string filename);
 
 		/// <summary>
 		/// Delete a file if it exists.
+		/// </summary>
+		/// <param name="filename">The name of the file.</param>
+		/// <returns>Returns a task whose result is true if the file existed and was deleted.</returns>
+		bool DeleteFile(string filename);
+
+		/// <summary>
+		/// Delete a file if it exists asynchronously.
 		/// </summary>
 		/// <param name="filename">The name of the file.</param>
 		/// <returns>Returns a task whose result is true if the file existed and was deleted.</returns>

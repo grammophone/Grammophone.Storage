@@ -23,6 +23,15 @@ namespace Grammophone.Storage
 		/// <returns>
 		/// Returns a task whose result holds the container or null of the container doesn't exist.
 		/// </returns>
+		IStorageContainer GetContainer(string containerName);
+
+		/// <summary>
+		/// Get a reference to a container asynchronously.
+		/// </summary>
+		/// <param name="containerName">The name of the container.</param>
+		/// <returns>
+		/// Returns a task whose result holds the container or null of the container doesn't exist.
+		/// </returns>
 		Task<IStorageContainer> GetContainerAsync(string containerName);
 	}
 }
