@@ -19,7 +19,7 @@ Implementations must be thread-safe.
 <strong>IStorageClient</strong>
 </td>
 <td>
-A client for accessing <strong>IStorageContainer</strong>s
+A client for accessing <strong>IStorageContainer</strong>s.
 </td>
 </tr>
 <tr>
