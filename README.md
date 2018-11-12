@@ -41,8 +41,7 @@ Represents a file in a <strong>IStorageContainer</strong>.
 </tbody>
 </table>
 
-When concrete implementations exist, use your preferred dependency injection framework
-to obtain a singleton `IStorageProvider` instance. The project
+Use your preferred dependency injection framework to obtain a singleton `IStorageProvider` instance. The project
 [Grammophone.Storage.Azure](https://github.com/grammophone/Grammophone.Storage.Azure) provides an implementation for Azure blob storage.
 
 This library has no dependencies.
