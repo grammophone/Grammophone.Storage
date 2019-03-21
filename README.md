@@ -1,5 +1,5 @@
 # Grammophone.Storage
-This .NET framework library sets a contract to abstract a file storage system.
+This .NET Standard 2.0 library sets a contract to abstract a file storage system.
 The specific adaptations must implement the `IStorageProvider` interface and the interfaces following from its methods:
 
 <table>

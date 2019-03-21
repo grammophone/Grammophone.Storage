@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{5ECD757E-E8E8-4CD2-9E01-F0FB946980DA}</ProjectGuid>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>Grammophone.Storage</AssemblyTitle>
     <Product>Grammophone.Storage</Product>
     <Copyright>Copyright © Grammophone 2016</Copyright>
